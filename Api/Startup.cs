@@ -1,3 +1,4 @@
+#region usings
 using MinimalApi;
 using Microsoft.EntityFrameworkCore;
 using MinimalApi.Dominio.Interfaces;
@@ -15,20 +16,20 @@ using MinimalApi.DTOs;
 using MinimalApi.Dominio.ModelViews;
 using Microsoft.AspNetCore.Authorization;
 using MinimalApi.Dominio.Enuns;
-
+#endregion
 public class Startup
 {
 
+            #region Contrutor
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
         key = Configuration?.GetSection("Jwt")?.ToString() ?? "";
     }
-
     private string key = "";
     public IConfiguration Configuration { get; set; } = default!;
-
-
+            #endregion
+            #region Configuração dos Serviços
     public void ConfigureServices(IServiceCollection services)
     {
         
@@ -113,9 +114,10 @@ public class Startup
         app.UseAuthorization();
 
         app.UseCors();
+        #endregion
 
-        app.UseEndpoints(endpoints => {
             #region Home
+        app.UseEndpoints(endpoints => {
             endpoints.MapGet("/", () => Results.Json(new Home())).AllowAnonymous().WithTags("Home");
             #endregion
 
