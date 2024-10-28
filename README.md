@@ -42,7 +42,7 @@ Para autenticar um administrador e obter um token JWT, utilize o seguinte endpoi
 ```json
 {
   "email": "admin@test.com",
-  "senha": "adm"
+  "senha": "123456"
 }
 ```
 
